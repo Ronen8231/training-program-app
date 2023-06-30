@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import * as React from "react";
 
 interface WorkoutProps {
     totalTime: number;
@@ -69,14 +70,14 @@ function ContinuousWorkouts({ totalTime }: WorkoutProps) {
 }
 
 function Calculator() {
-    const [continuousWorkouts, setContinuousWorkouts] = useState(null);
+    const [continuousWorkouts, setContinuousWorkouts] = useState(<></>);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
 
-    function handleCalculateClick(e) {
+    function handleCalculateClick(e: React.MouseEvent) {
         e.preventDefault();
-        let totalSecondsToFinish = Number(seconds) + Number(minutes * 60) + Number(hours * 60 * 60);
+        let totalSecondsToFinish = seconds + minutes * 60 + hours * 60 * 60;
         setContinuousWorkouts(<ContinuousWorkouts totalTime={totalSecondsToFinish}></ContinuousWorkouts>);
     }
 
@@ -88,9 +89,9 @@ function Calculator() {
                         תוצאת בוחן הכש"ג
                     </label>
                     <div id="lastExamResult">
-                        <input className="form-control form-control-sm" onChange={(e) => setHours(e.target.value)} placeholder="שעות" type="number" name="time_hours" min="0" max="59"></input>
-                        <input className="form-control form-control-sm" onChange={(e) => setMinutes(e.target.value)} placeholder="דקות" type="number" name="time_minutes" min="0" max="59"></input>
-                        <input className="form-control form-control-sm" onChange={(e) => setSeconds(e.target.value)} placeholder="שניות" type="number" name="time_seconds" min="0" max="59"></input>
+                        <input className="form-control form-control-sm" onChange={(e) => setHours(Number(e.target.value))} placeholder="שעות" type="number" name="time_hours" min="0" max="59"></input>
+                        <input className="form-control form-control-sm" onChange={(e) => setMinutes(Number(e.target.value))} placeholder="דקות" type="number" name="time_minutes" min="0" max="59"></input>
+                        <input className="form-control form-control-sm" onChange={(e) => setSeconds(Number(e.target.value))} placeholder="שניות" type="number" name="time_seconds" min="0" max="59"></input>
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={handleCalculateClick}>
                         חשב
