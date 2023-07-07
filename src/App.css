@@ -1,0 +1,22 @@
+.results {
+    width: 20%;
+}
+
+.btn-container {
+    display: flex;
+    width: 20%;    
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.calculate {
+    display: flex;
+    border-radius: 15px;
+    height: 28px;
+    justify-content: center;
+    align-items: center;
+}
+
+.workoutPlanContainer {
+    width: 50%;
+}
