@@ -1,22 +1,71 @@
 .results {
-    width: 20%;
+  width: 40%;
+}
+
+.header {
+  background-color: #0d0e21;
+  padding: 6px;
+  border-radius: 7px;
+  height: 65px;
+  margin: 20px;
+}
+
+.title {
+  color: #fff;
+  font-size: 35px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn-container {
-    display: flex;
-    width: 20%;    
-    justify-content: flex-end;
-    margin-top: 10px;
+  display: flex;
+  width: 20%;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .calculate {
-    display: flex;
-    border-radius: 15px;
-    height: 28px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  border-radius: 15px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+}
+
+.workoutPlan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
 }
 
 .workoutPlanContainer {
-    width: 50%;
+  width: 50%;
+}
+
+.videos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.runningVid,
+.pushUpsVid,
+.lastExamResultContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 5px double #152246;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.pushUpsVid {
+}
+
+.mb-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
