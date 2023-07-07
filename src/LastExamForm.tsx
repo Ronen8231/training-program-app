@@ -2,6 +2,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import * as React from "react";
+import Accordion from "react-bootstrap/Accordion";
 
 interface WorkoutProps {
     totalTime: number;
@@ -10,7 +11,7 @@ interface WorkoutProps {
 function paceAsMinutes(pace: number) {
     let minutes = Math.floor(pace / 60);
     let seconds = Math.floor(pace % 60);
-    return minutes + ":" + seconds;
+    return minutes + ":" + seconds.toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false });
 }
 
 function ContinuousWorkouts({ totalTime }: WorkoutProps) {
@@ -18,59 +19,49 @@ function ContinuousWorkouts({ totalTime }: WorkoutProps) {
     return (
         <>
             <h3>אימוני רצף</h3>
-            <div className="accordion" id="continousWorkoutsAccordion">
-                <div className="accordion-item">
-                    <h4 className="accordion-header">
-                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorkoutOne" aria-expanded="true" aria-controls="collapseWorkoutOne">
-                            אימו רצף נרחב
-                        </button>
-                    </h4>
-                    <div id="collapseWorkoutOne" className="accordion-collapse collapse show" data-bs-parent="#continousWorkoutsAccordion">
-                        <div className="accordion-body">רוץ עד 3 קילומטר בקצב {paceAsMinutes(oneKmPace * 1.4)} לקילומטר </div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h4 className="accordion-header">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorkoutTwo" aria-expanded="true" aria-controls="collapseWorkoutTwo">
-                            אימון רצף בינוני קבוע
-                        </button>
-                    </h4>
-                    <div id="collapseWorkoutTwo" className="accordion-collapse collapse" data-bs-parent="#continousWorkoutsAccordion">
-                        <div className="accordion-body">רוץ עד 3 קילומטר בקצב {paceAsMinutes(oneKmPace * 1.15)} לקילומטר</div>
-                    </div>
-                </div>
-            </div>
-            {/* <ul className="list-group">
-                <li className="list-group-item">
-                    <p>
-                        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#first-continuous-workout" aria-expanded="false" aria-controls="collapseExample">
-                            אימון רצף נרחב
-                        </button>
-                    </p>
-                    <div className="collapse" id="first-continuous-workout">
-                        <div className="card card-body">רוץ עד 3 קילומטר בקצב {paceAsMinutes(oneKmPace * 1.4)} לקילומטר</div>
-                    </div>
-                </li>
-                <li className="list-group-item">
-                    <p>
-                        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#second-continuous-workout" aria-expanded="false" aria-controls="collapseExample">
-                            אימון רצף בינוני קבוע
-                        </button>
-                    </p>
-                    <div className="collapse" id="second-continuous-workout">
-                        <div className="card card-body">רוץ עד 3 קילומטר בקצב {paceAsMinutes(oneKmPace * 1.15)} לקילומטר</div>
-                    </div>
-                </li>
-                <li className="list-group-item">A third item</li>
-                <li className="list-group-item">A fourth item</li>
-                <li className="list-group-item">And a fifth one</li>
-            </ul> */}
+            <Accordion defaultActiveKey="0">
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>אימון רצף נרחב</Accordion.Header>
+                    <Accordion.Body>רוץ עד 5 קילומטר בקצב {paceAsMinutes(oneKmPace * 1.4)} לקילומטר </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                    <Accordion.Header>אימון רצף בינוני קבוע</Accordion.Header>
+                    <Accordion.Body>רוץ עד 3 קילומטר בקצב {paceAsMinutes(oneKmPace * 1.15)} לקילומטר</Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+        </>
+    );
+}
+
+function IntervalWorkouts({ totalTime }: WorkoutProps) {
+    let oneKmPace = totalTime / 3;
+    return (
+        <>
+            <h3>אימוני מקטעים</h3>
+            <Accordion defaultActiveKey="0">
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>אימון מקטעים - פירמידה יורדת</Accordion.Header>
+                    <Accordion.Body>
+                        רוץ 800 מטרים בקצב של {paceAsMinutes(oneKmPace * 1.05 * 0.8)} דקות - נוח 2 דקות <br></br>
+                        רוץ 600 מטרים בקצב של {paceAsMinutes(oneKmPace * 1.05 * 0.6)} דקות - נוח דקה וחציּ <br></br>
+                        רוץ 400 מטרים בקצב של {paceAsMinutes(oneKmPace * 1 * 0.4)} דקות - נוח דקה <br></br>
+                        רוץ 200 מטרים בקצב של {paceAsMinutes(oneKmPace * 1 * 0.2)} דקות <br></br>
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                    <Accordion.Header>אימון מקטעים - מקטעים קבועים</Accordion.Header>
+                    <Accordion.Body>
+                        רוץ 4*500 מטרים בקצב של {paceAsMinutes(oneKmPace * 1 * 0.5)} - נוח דקה וחצי בין המקטעים
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
         </>
     );
 }
 
 function Calculator() {
     const [continuousWorkouts, setContinuousWorkouts] = useState(<></>);
+    const [intervalWorkouts, setIntervalWorkouts] = useState(<></>);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
@@ -79,15 +70,18 @@ function Calculator() {
         e.preventDefault();
         let totalSecondsToFinish = seconds + minutes * 60 + hours * 60 * 60;
         setContinuousWorkouts(<ContinuousWorkouts totalTime={totalSecondsToFinish}></ContinuousWorkouts>);
+        setIntervalWorkouts(<IntervalWorkouts totalTime={totalSecondsToFinish}></IntervalWorkouts>);
     }
 
     return (
         <>
             <form>
                 <div className="mb-3">
-                    <label htmlFor="lastExamResult" className="form-label">
-                        תוצאת בוחן הכש"ג
-                    </label>
+                    <h2>
+                        <label htmlFor="lastExamResult" className="form-label">
+                            תוצאת בוחן הכש"ג
+                        </label>
+                    </h2>
                     <div id="lastExamResult">
                         <input className="form-control form-control-sm" onChange={(e) => setHours(Number(e.target.value))} placeholder="שעות" type="number" name="time_hours" min="0" max="59"></input>
                         <input className="form-control form-control-sm" onChange={(e) => setMinutes(Number(e.target.value))} placeholder="דקות" type="number" name="time_minutes" min="0" max="59"></input>
@@ -99,6 +93,7 @@ function Calculator() {
                 </div>
             </form>
             {continuousWorkouts}
+            {intervalWorkouts}
         </>
     );
 }

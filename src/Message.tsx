@@ -1,7 +1,6 @@
 
 function Message() {
-    const name = 'רונן';
-    return <h1> ברוכים הבאים {name} מחשבון הכש"ג!</h1>;
+    return <h1> ברוכים הבאים לאתר הכש"ג של בה"ד 1!</h1>;
 }
 
 export default Message;
