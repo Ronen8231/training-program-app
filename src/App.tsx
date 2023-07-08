@@ -21,12 +21,18 @@ function App() {
             </Navbar>
             <Message></Message>
             <section>
-                <div id="videos">
-                    <h2>סרטוני לימוד</h2>
-                    <h3>סרטון הסבר ריצה</h3>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ULrP69QUi-M" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                    <h3>סרטון הסבר שכיבות סמיכה</h3>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9B3Y9kGc79o" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                <div id="videos" className="videos">
+                    <div className="header">
+                        <span className="title">סרטוני לימוד</span>
+                    </div>
+                    <div className="runningVid">
+                        <h3>סרטון הסבר ריצה</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ULrP69QUi-M" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    </div>
+                    <div className="pushUpsVid">
+                        <h3>סרטון הסבר שכיבות סמיכה</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9B3Y9kGc79o" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    </div>
                 </div>
             </section>
             <section>
