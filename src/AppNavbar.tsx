@@ -13,8 +13,8 @@ function AppNavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/index.html">מחשבון</Nav.Link>
-                        <Nav.Link href="/videos.html">סרטוני לימוד</Nav.Link>
+                        <Nav.Link href="/training-program-app/index.html">מחשבון</Nav.Link>
+                        <Nav.Link href="/training-program-app/videos.html">סרטוני לימוד</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 function Copyright() {
     return (
         <div className="footer">
-        <img className="footerLogo" src="./public/Bahad_1_Symbol.SVG"></img>
+        <img className="footerLogo" src="/training-program-app/Bahad_1_Symbol.SVG"></img>
         <p><span>&copy;</span> פותח ע"י פלוגימל ברוש 81</p>
         </div>
     );
