@@ -16,6 +16,8 @@ function TrainingProgram() {
                         רוצים להבין מה הקצב שאתם צריכים לרוץ בו בריצה קלה, בינונית ומהירה?
                         <br></br>
                         גשו ל<a href="/training-program-app/index.html">מחשבון</a>
+                        <br></br>
+                        לחצו <a href="/training-program-app/program.pdf">כאן</a> בשביל pdf עם אימוני כוח לדוגמה
                     </strong>
                 </p>
                 <Table striped bordered hover>
