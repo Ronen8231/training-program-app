@@ -1,4 +1,3 @@
-
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -14,6 +13,7 @@ function AppNavBar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/training-program-app/index.html">מחשבון</Nav.Link>
+                        <Nav.Link href="/training-program-app/training_program.html">תכנית אימונים</Nav.Link>
                         <Nav.Link href="/training-program-app/videos.html">סרטוני לימוד</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
@@ -23,4 +23,3 @@ function AppNavBar() {
 }
 
 export default AppNavBar;
-
