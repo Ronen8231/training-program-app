@@ -64,13 +64,33 @@
 .pushUpsVid {
 }
 
-.footer {
+.paces {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.circle-singleline {
+    /* border-radius: 95%; */
+    margin: 7px;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    background: #808080;
+    color: #fff;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+p, h2 {
+    text-align: center;
+    /* line-height: 100px; */
+}
 .footerLogo {
     width: 100px;
 }

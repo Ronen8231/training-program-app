@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import * as React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import './App.css';
+import "./App.css";
 
 interface WorkoutProps {
     totalTime: number;
@@ -57,9 +57,7 @@ function IntervalWorkouts({ totalTime }: WorkoutProps) {
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header>אימון מקטעים - מקטעים קבועים</Accordion.Header>
-                            <Accordion.Body>
-                                רוץ 4*500 מטרים בקצב של {paceAsMinutes(oneKmPace * 1 * 0.5)} - נוח דקה וחצי בין המקטעים
-                            </Accordion.Body>
+                            <Accordion.Body>רוץ 4*500 מטרים בקצב של {paceAsMinutes(oneKmPace * 1 * 0.5)} - נוח דקה וחצי בין המקטעים</Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                 </div>
@@ -74,10 +72,12 @@ function Calculator() {
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
+    let [oneKmPace, setPace] = useState(0);
 
     function handleCalculateClick(e: React.MouseEvent) {
         e.preventDefault();
         let totalSecondsToFinish = seconds + minutes * 60 + hours * 60 * 60;
+        setPace(totalSecondsToFinish / 3);
         setContinuousWorkouts(<ContinuousWorkouts totalTime={totalSecondsToFinish}></ContinuousWorkouts>);
         setIntervalWorkouts(<IntervalWorkouts totalTime={totalSecondsToFinish}></IntervalWorkouts>);
     }
@@ -105,8 +105,26 @@ function Calculator() {
                     </div>
                 </div>
             </form>
+
+            <div className="paces">
+                <div className="circle-singleline">
+                    קצב קל - בין {paceAsMinutes(oneKmPace * 1.25)} ל - {paceAsMinutes(oneKmPace * 1.4)} דק' לק"מ{" "}
+                </div>
+                <div className="circle-singleline">
+                    קצב בינוני - בין {paceAsMinutes(oneKmPace * 1.1)} ל - {paceAsMinutes(oneKmPace * 1.2)} דק' לק"מ{" "}
+                </div>
+                <div className="circle-singleline">
+                    קצב מהיר - בין {paceAsMinutes(oneKmPace * 1)} ל - {paceAsMinutes(oneKmPace * 1.05)} דק' לק"מ{" "}
+                </div>
+            </div>
+            <br></br>
+            <h2>אימוני ריצה לדוגמה</h2>
             {continuousWorkouts}
             {intervalWorkouts}
+            <br></br>
+            <p className="lead">
+                <strong>האימונים לדוגמה נלקחו מחוברת מערכי הריצה של מערך הכושר הקרבי</strong>
+            </p>
         </>
     );
 }
